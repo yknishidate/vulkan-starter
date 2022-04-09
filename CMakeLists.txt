@@ -6,10 +6,21 @@ add_subdirectory(external/glfw)
 add_subdirectory(external/glslang)
 add_subdirectory(external/SPIRV-Cross)
 
-add_executable(${PROJECT_NAME} main.cpp)
+file(GLOB sources source/*.cpp)
+add_executable(${PROJECT_NAME} 
+    ${sources}
+    external/imgui/backends/imgui_impl_glfw.cpp
+    external/imgui/backends/imgui_impl_vulkan.cpp
+    external/imgui/imgui_demo.cpp
+    external/imgui/imgui_draw.cpp
+    external/imgui/imgui_tables.cpp
+    external/imgui/imgui.cpp
+    external/imgui/imgui_widgets.cpp
+)
 
 target_link_libraries(
     ${PROJECT_NAME} PUBLIC 
+    $ENV{VULKAN_SDK}/Lib/vulkan-1.lib
     glfw
     glslang
     glslang-default-resource-limits
@@ -27,4 +38,7 @@ target_include_directories(
     "${PROJECT_SOURCE_DIR}/external/tinygltf"
     "${PROJECT_SOURCE_DIR}/external/glslang"
     "${PROJECT_SOURCE_DIR}/external/SPIRV-Cross"
+    "${PROJECT_SOURCE_DIR}/external/spdlog/include"
+    "${PROJECT_SOURCE_DIR}/external/imgui"
+    "${PROJECT_SOURCE_DIR}/external/imgui/backends"
 )
