@@ -2,7 +2,12 @@ cmake_minimum_required(VERSION 3.10)
 project(vk LANGUAGES CXX)
 set(CMAKE_CXX_STANDARD 20)
 
-set(ENABLE_HLSL OFF)
+option(GLFW_BUILD_DOCS OFF)
+option(GLFW_BUILD_TESTS OFF)
+option(GLFW_BUILD_EXAMPLES OFF)
+option(GLFW_BUILD_TESTS OFF)
+option(GLFW_INSTALL OFF)
+option(ENABLE_HLSL OFF)
 
 add_subdirectory(external/glfw)
 add_subdirectory(external/glslang)
