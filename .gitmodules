@@ -29,3 +29,6 @@
 	path = external/imgui
 	url = https://github.com/ocornut/imgui.git
 	branch = docking
+[submodule "external/imgui-vulkan-hpp-backend"]
+	path = external/imgui-vulkan-hpp-backend
+	url = https://github.com/yknishidate/imgui-vulkan-hpp-backend.git

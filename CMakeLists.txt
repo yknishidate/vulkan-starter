@@ -2,6 +2,8 @@ cmake_minimum_required(VERSION 3.10)
 project(vk LANGUAGES CXX)
 set(CMAKE_CXX_STANDARD 20)
 
+set(ENABLE_HLSL OFF)
+
 add_subdirectory(external/glfw)
 add_subdirectory(external/glslang)
 add_subdirectory(external/SPIRV-Cross)
@@ -14,12 +16,14 @@ add_library(imgui STATIC
     external/imgui/imgui_tables.cpp
     external/imgui/imgui.cpp
     external/imgui/imgui_widgets.cpp
+    external/imgui-vulkan-hpp-backend/imgui_impl_vulkan_hpp.cpp
 )
 target_include_directories(
     imgui PUBLIC
     "${PROJECT_SOURCE_DIR}/external/vulkan/include"
     "${PROJECT_SOURCE_DIR}/external/imgui"
     "${PROJECT_SOURCE_DIR}/external/imgui/backends"
+    "${PROJECT_SOURCE_DIR}/external/imgui-vulkan-hpp-backend"
 )
 
 file(GLOB sources source/*.cpp)
@@ -65,4 +69,5 @@ target_include_directories(
     "${PROJECT_SOURCE_DIR}/external/spdlog/include"
     "${PROJECT_SOURCE_DIR}/external/imgui"
     "${PROJECT_SOURCE_DIR}/external/imgui/backends"
+    "${PROJECT_SOURCE_DIR}/external/imgui-vulkan-hpp-backend"
 )
